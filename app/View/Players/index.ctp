@@ -1,3 +1,5 @@
+<?php echo $this->Html->css('style'); ?>
+
 <?php 
 
 print_r($players);
