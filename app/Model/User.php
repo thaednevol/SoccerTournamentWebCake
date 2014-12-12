@@ -11,5 +11,10 @@ class User extends AppModel {
 	
 	public $name = 'User';
 	public $has = array('Players');
+	public $has = array('Countries' => array(
+            'conditions' => array(
+                 'Users.nationality = Countries.id'
+             ),
+        ));
 }
 ?>

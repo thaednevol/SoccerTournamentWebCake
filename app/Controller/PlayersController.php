@@ -6,7 +6,17 @@ class PlayersController extends AppController {
 	//public $uses = array('Users', 'Players');
 	
 	public function index() {
+		//$this->loadModel('Country');
 		$this->set('players', $this->Player->find('all'));
+		//,array('fields' => array('Users.nationality', 'countries.id'))
+		/*$pl = $this->Player->find('all');
+		
+		$this->Player->find('all',  array('conditions'=>array('User.id'=>5)));
+		
+		print_r();		
+		*/
+		
+		//$this->set('countries', $this->Country->find('all'));
 	}
 	
 	public function addEnums($name, $modelo){
@@ -34,8 +44,6 @@ class PlayersController extends AppController {
 			$this->User->create();
 			
 			$datosUsuario=$this->request->data['Player'];
-			
-			
 			
 			$usuario['name']=$datosUsuario['name'];
 			$usuario['firstsurname']=$datosUsuario['firstsurname'];
