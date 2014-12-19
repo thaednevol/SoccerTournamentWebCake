@@ -1,6 +1,8 @@
 <?php
 
 class Player extends AppModel {
+	public $actsAs = array('Containable');	
+	
 	public $validate = 
 	array(
 	'name' =>array('rule' => 'notEmpty'),

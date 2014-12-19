@@ -7,7 +7,7 @@ class PlayersController extends AppController {
 	
 	public function index() {
 		//$this->loadModel('Country');
-		$this->set('players', $this->Player->find('all'));
+		$this->set('players', $this->Player->query('select * from players inner join users on players.users_id=users.id inner join countries on countries.id= users.nationality'));
 		//,array('fields' => array('Users.nationality', 'countries.id'))
 		/*$pl = $this->Player->find('all');
 		

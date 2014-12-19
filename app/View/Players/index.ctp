@@ -1,9 +1,5 @@
 <?php 
 
-//print_r($players);
-
-print_r($countries[1]);
-
 $count =count($players);
 
 
@@ -14,9 +10,9 @@ echo "<div class='players-list'>";
 echo "<ol id='players-list'>";
   
 for($i=0;$i<$count; $i++) {
-	$pos = substr($players[$i]['Player']['position'], 0, 2); 
-	$num = $players[$i]['Player']['number'];
-	$surname = $players[$i]['Users']['firstsurname'];
+	$pos = substr($players[$i]['players']['position'], 0, 2); 
+	$num = $players[$i]['players']['number'];
+	$surname = $players[$i]['users']['firstsurname'];
 	echo "<div class='seleccion' id='pl_".$i."'><li class='ui-widget-content'>".$pos."\t".$num."\t".$surname."</li></div>";
 } 
 
@@ -29,10 +25,10 @@ echo "</div>";
 echo "<div class='player-details-list'>";
 
 for($i=0;$i<$count; $i++) {
-	$pos = substr($players[$i]['Player']['position'], 0, 2); 
-	$num = $players[$i]['Player']['number'];
-	$name = $players[$i]['Users']['name'];
-	$surname = $players[$i]['Users']['firstsurname'];
+	$pos = substr($players[$i]['players']['position'], 0, 2); 
+	$num = $players[$i]['players']['number'];
+	$name = $players[$i]['users']['name'];
+	$surname = $players[$i]['users']['firstsurname'];
 	if ($i==0){
 		echo "<div class='player-details' id='pldtl_".$i."'>";
 		
@@ -43,23 +39,23 @@ for($i=0;$i<$count; $i++) {
 				echo "</div>";
 		
 				echo "<div class='player-photo'>";
-				echo "<img src='./img/messi.jpg' alt='API Changelog' >";
+				echo "<img src='./img/".$players[$i]['users']['id'].".jpg' alt='API Changelog' >";
 				echo "</div>";
 		
 				echo "<div class='player-image-armory'>";
-				echo "<img src='./img/500px-Escudo_FCB.png' alt='API Changelog' >";
+				echo "<img src='./img/flags/".$players[$i]['countries']['alpha_2'].".png' alt='API Changelog' >";
 				echo "</div>";
 		
 				echo "<div class='player-image-flag'>";
-				echo "<img src='./img/ar-icon-finder.png' alt='API Changelog' >";
+				echo "<img src='./img/flags/".$players[$i]['countries']['alpha_2'].".png' alt='API Changelog' >";
 				echo "</div>";
 			echo "</div>";
 			
 			echo "<div class='player-detail'>";
 				echo "<p><b>Nombre:</b> ".$name." ".$surname."</p>";
-				echo "<p><b>Nacimiento:</b> ".$players[$i]['Users']['birthdate']."</p>";
-				echo "<p><b>Pie:</b> ".$players[$i]['Player']['foot']."</p>";
-				echo "<p><b>Altura:</b> ".$players[$i]['Users']['height']."</p>";
+				echo "<p><b>Nacimiento:</b> ".$players[$i]['users']['birthdate']."</p>";
+				echo "<p><b>Pie:</b> ".$players[$i]['players']['foot']."</p>";
+				echo "<p><b>Altura:</b> ".$players[$i]['users']['height']."</p>";
 			echo "</div>";
 			
 			echo "<div class='player-position'>";
@@ -71,7 +67,40 @@ for($i=0;$i<$count; $i++) {
 		
 	}
 	else {
-		echo "<div class='player-details' id='pldtl_".$i."' style='display: none;'><p>".$name."</p><img src='http://lorempixel.com/200/100/' alt='API Changelog' width='44' height='44'></div>";
+		echo "<div class='player-details' id='pldtl_".$i."' style='display: none;'>";
+		
+			echo "<div class='player-image'>";
+
+				echo "<div class='player-image-name'>";
+				echo $surname;
+				echo "</div>";
+		
+				echo "<div class='player-photo'>";
+				echo "<img src='./img/".$players[$i]['users']['id'].".jpg' alt='API Changelog' >";
+				echo "</div>";
+		
+				echo "<div class='player-image-armory'>";
+				echo "<img src='./img/flags/".$players[$i]['countries']['alpha_2'].".png' alt='API Changelog' >";
+				echo "</div>";
+		
+				echo "<div class='player-image-flag'>";
+				echo "<img src='./img/flags/".$players[$i]['countries']['alpha_2'].".png' alt='API Changelog' >";
+				echo "</div>";
+			echo "</div>";
+			
+			echo "<div class='player-detail'>";
+				echo "<p><b>Nombre:</b> ".$name." ".$surname."</p>";
+				echo "<p><b>Nacimiento:</b> ".$players[$i]['users']['birthdate']."</p>";
+				echo "<p><b>Pie:</b> ".$players[$i]['players']['foot']."</p>";
+				echo "<p><b>Altura:</b> ".$players[$i]['users']['height']."</p>";
+			echo "</div>";
+			
+			echo "<div class='player-position'>";
+				echo "<img src='./img/campo-messi.png' alt='API Changelog' >";
+			echo "</div>";
+		
+		
+		echo "</div>";
 	}
 	
 }
